@@ -1,0 +1,5 @@
+<div>
+  <ol>
+    <li *ngFor="let comida of listaComidas" (click) = 'nav(comida.nombre)'>{{comida.nombre}}</li>
+  </ol>
+</div>

@@ -1,0 +1,11 @@
+<form (ngSubmit)="agregar()">
+  <input type="text" [(ngModel)]="nombre" name="nombre" placeholder="nombre">
+  <br>
+  <input type="text" [(ngModel)]="descripcion" name="descripcion" placeholder="descripcion">
+  <br>
+  <input type="number" [(ngModel)]="cantidad" name="cantidad" value = "0">
+  <br>
+  <input type="number" [(ngModel)]="precio_unidad" name="precio_unidad" value = "0">
+  <br>
+  <button type="submit" id="agregar">Agregar comida</button>
+</form>

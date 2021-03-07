@@ -1,0 +1,23 @@
+<!-- Contenedor del navbar-home -->
+<div class="nav">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-sm-1">
+        <img id="logo" src="../../../assets/logo.jpg">
+      </div>
+
+      <div class="col-sm-11 vcenter">
+        <ul class="menu">
+          <li><a [routerLink]="['/admin/comidas']">Comidas</a></li>
+          <li><a [routerLink]="['/admin/reportes']">Reportes</a></li>
+          <li><a (click)="logout()">Cerrar sesion</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</div>

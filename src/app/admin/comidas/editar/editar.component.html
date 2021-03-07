@@ -1,0 +1,11 @@
+<form (ngSubmit)="editar()">
+  <input type="text" [(ngModel)]="comida.nombre" name="nombre" placeholder="nombre" value="comida.nombre">
+  <br>
+  <input type="text" [(ngModel)]="comida.descripcion" name="descripcion" value="comida.descripcion">
+  <br>
+  <input type="number" [(ngModel)]="comida.cantidad_disponible" name="cantidad" value = "comida.cantidad_disponible">
+  <br>
+  <input type="number" [(ngModel)]="comida.precio_unidad" name="precio_unidad" value = "comida.precio_unidad">
+  <br>
+  <button type="submit" id="editar">Editar comida</button>
+</form>

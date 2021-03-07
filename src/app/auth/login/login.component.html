@@ -1,0 +1,14 @@
+<div>
+  <form (ngSubmit)="doLogin()">
+    <input  type="text" [(ngModel)]="user" name="user" placeholder="correo">
+    <br>
+    <input  type="password" [(ngModel)]="password" name="pass" placeholder="contraseña">
+    <br>
+    <div>
+      <a [routerLink] = "['/signup']">No tienes una cuenta? Registrate</a>
+    </div>
+    <br>
+    <!-- Boton que acciona la funcion doLogin() -->
+    <button type="submit" id="login">Iniciar sesion</button>
+  </form>
+</div>
