@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Comida } from './../../../models/comida';
-import { ComidaService } from './../servicios/comida.service';
+import { ComidaService } from './../../servicios/comida.service';
 
 @Component({
   selector: 'app-agregar',
@@ -19,7 +19,7 @@ export class AgregarComponent implements OnInit {
 
   agregar() {
     //validaciones
-    this.comidaService.agregarComida(new Comida(this.nombre, this.descripcion, this.cantidad, this.precio_unidad));
+    this.comidaService.agregarComida(new Comida(-1, this.nombre, this.descripcion, this.cantidad, this.precio_unidad));
     alert("se agrego exitosamente");
   }
 }

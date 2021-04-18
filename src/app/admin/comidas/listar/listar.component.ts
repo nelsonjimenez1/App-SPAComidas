@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Comida } from './../../../models/comida';
-import { ComidaService } from './../servicios/comida.service';
+import { ComidaService } from './../../servicios/comida.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -14,12 +14,16 @@ export class ListarComponent implements OnInit {
   constructor(private comidaService: ComidaService, private router: Router) { }
 
   ngOnInit(): void {
-    this.listaComidas = this.comidaService.obtenerListaComidas();
-    console.log(this.listaComidas);
+    this.comidaService.obtenerListaComidas().subscribe(
+      results => {
+        console.log(results);
+        this.listaComidas = results;
+      },
+      error => console.error(error)
+    );
   }
 
-  nav(comidaNombre:string) {
-    this.router.navigate(["/admin/comidas/vista/" + comidaNombre]);
+  nav(id:number) {
+    this.router.navigate(["/admin/comidas/vista/" + id]);
   }
-
 }

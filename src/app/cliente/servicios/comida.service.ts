@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Comida } from './../../../models/comida';
+import { Comida } from './../../models/comida';
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +8,7 @@ import { Comida } from './../../../models/comida';
 export class ComidaService {
   private listaComidas:Comida[] = []
   constructor() {
-    this.inicializar();
-  }
 
-  inicializar() {
-    var comida = new Comida('comida 1', 'esta es la comida 1', 5, 5000);
-    this.listaComidas.push(comida);
   }
 
   obtenerListaComidas() {
@@ -21,7 +16,7 @@ export class ComidaService {
   }
 
   buscarComidaPorNombe(nombre:string):Comida {
-    var comida = new Comida('', '', -1, -1);
+    var comida = new Comida(-1, '', '', -1, -1);
     this.listaComidas.map(elem => {
       if(elem.nombre == nombre) {
         comida = elem;

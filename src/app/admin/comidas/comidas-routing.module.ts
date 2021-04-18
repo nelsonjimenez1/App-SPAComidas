@@ -9,13 +9,13 @@ const routes: Routes = [
     path: '', component: ListarComponent
   },
   {
-    path: 'vista/:comidaNombre', component: VistaComponent
+    path: 'vista/:id', component: VistaComponent
   },
   {
     path: 'agregar', component: AgregarComponent
   },
   {
-    path: 'editar/:comidaNombre', component: EditarComponent
+    path: 'editar/:id', component: EditarComponent
   },
 ];
 

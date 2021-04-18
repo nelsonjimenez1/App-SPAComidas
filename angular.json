@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "SPAComidas"
+  "defaultProject": "SPAComidas",
+  "cli": {
+    "analytics": "baaf1c84-aedf-4d60-9837-c4482a4e5dc1"
+  }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Venta } from './../../../models/venta';
+import { Venta } from './../../models/venta';
 
 
 @Injectable({
@@ -32,7 +32,7 @@ export class VentaService {
   obtenerVenta(user:string, nombreComida:string):Venta {
     var venta = new Venta();
     this.listaVentas.map(elem => {
-      if(elem.user == user && elem.nombreComida) {
+      if(elem.user == user && elem.comida.nombre) {
         venta = elem;
       }
     });

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Comida } from './../../../models/comida';
-import { ComidaService } from './../servicios/comida.service';
+import { ComidaService } from './../../servicios/comida.service';
 
 @Component({
   selector: 'app-vista',
@@ -9,24 +9,30 @@ import { ComidaService } from './../servicios/comida.service';
   styleUrls: ['./vista.component.css']
 })
 export class VistaComponent implements OnInit {
-  public comida:Comida = new Comida('', '', -1, -1);
+  public comida:Comida = new Comida(-1, '', '', -1, -1);
 
   constructor(private comidaService: ComidaService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    var nombre = this.route.snapshot.paramMap.get('comidaNombre');
-    if(!nombre) {
-      nombre = '';
+    var id = Number(this.route.snapshot.paramMap.get('id'));
+    if(!id) {
+      id = -1;
     }
-    this.comida = this.comidaService.buscarComidaPorNombe(nombre);
+    this.comidaService.buscarComidaPorNombe(id).subscribe(
+      result => {
+        console.log(result);
+        this.comida = result;
+      },
+      error => console.error(error)
+    );
   }
 
-  nav(comidaNombre:string) {
-    this.router.navigate(["/admin/comidas/editar/" + comidaNombre]);
+  nav(id:number) {
+    this.router.navigate(["/admin/comidas/editar/" + id]);
   }
 
-  eliminar(comidaNombre:string) {
-    this.comidaService.eliminarComida(comidaNombre);
+  eliminar(id:number) {
+    this.comidaService.eliminarComida(id);
     alert("se elimino exitosamente");
   }
 }

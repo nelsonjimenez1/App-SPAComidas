@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Venta } from './../../../models/venta';
 import { Comida } from './../../../models/comida';
-import { VentaService } from './../../tienda/servicios/venta.service';
-import { ComidaService } from './../../../admin/comidas/servicios/comida.service';
+import { VentaService } from './../../servicios/venta.service';
+import { ComidaService } from './../../servicios/comida.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -13,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class VistaComponent implements OnInit {
 
   public venta:Venta = new Venta();
-  public comida:Comida = new Comida('', '', -1, -1);;
+  public comida:Comida = new Comida(-1, '', '', -1, -1);;
 
   constructor(private ventaService: VentaService, private comidaService: ComidaService, private route: ActivatedRoute, private router: Router) { }
 

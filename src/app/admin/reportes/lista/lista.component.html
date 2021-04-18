@@ -1,6 +1,6 @@
 <div>
   <ol>
-    <li *ngFor="let venta of listaVentas">{{venta.nombreComida}} {{venta.user}} {{venta.precio_total}}</li>
+    <li *ngFor="let venta of listaVentas">{{venta.comida.nombre}} {{venta.precio_total}}</li>
   </ol>
   <p>total: {{total}}</p>
 </div>

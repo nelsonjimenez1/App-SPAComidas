@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Comida } from './../../../models/comida';
 import { Venta } from './../../../models/venta';
-import { ComidaService } from './../../../admin/comidas/servicios/comida.service';
-import { VentaService } from './../servicios/venta.service';
+import { ComidaService } from './../../servicios/comida.service';
+import { VentaService } from './../../servicios/venta.service';
 import { AuthService } from './../../../auth/services/auth.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { AuthService } from './../../../auth/services/auth.service';
 })
 export class VistaProductoComponent implements OnInit {
 
-  public comida:Comida=new Comida('', '', -1, -1);
+  public comida:Comida=new Comida(-1, '', '', -1, -1);
   public cantidad_productos = 0;
 
   constructor(private ventaService: VentaService, private comidaService: ComidaService, private auth: AuthService, private route: ActivatedRoute, private router: Router) { }
@@ -28,7 +28,7 @@ export class VistaProductoComponent implements OnInit {
 
   comprar(comidaNombre:string) {
     var venta = new Venta()
-    venta.nombreComida = this.comida.nombre;
+    venta.comida = this.comida;
     venta.fecha = new Date();
     venta.cantidad_productos = this.cantidad_productos;
     venta.precio_total = venta.cantidad_productos*this.comida.precio_unidad;
