@@ -19,7 +19,13 @@ export class AgregarComponent implements OnInit {
 
   agregar() {
     //validaciones
-    this.comidaService.agregarComida(new Comida(-1, this.nombre, this.descripcion, this.cantidad, this.precio_unidad));
-    alert("se agrego exitosamente");
+    this.comidaService.agregarComida(new Comida(-1, this.nombre, this.descripcion, this.cantidad, this.precio_unidad)).subscribe(
+      result => {
+        console.log(result);
+        alert("se agrego exitosamente");
+      },
+      error => console.error(error)
+    );
+
   }
 }

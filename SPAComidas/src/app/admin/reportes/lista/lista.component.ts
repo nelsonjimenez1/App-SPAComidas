@@ -23,12 +23,13 @@ export class ListaComponent implements OnInit {
       results => {
         console.log(results);
         this.listaVentas = results;
+        this.listaVentas.map(elem => {
+          suma = suma + elem.precio_total;
+        });
+        this.total =suma;
       },
       error => console.error(error)
     );
-    this.listaVentas.map(elem => {
-      suma = suma + elem.precio_total;
-    });
-    this.total =suma;
+
   }
 }

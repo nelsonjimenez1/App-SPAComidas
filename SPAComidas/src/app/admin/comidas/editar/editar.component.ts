@@ -29,7 +29,13 @@ export class EditarComponent implements OnInit {
 
   editar() {
     //validaciones
-    this.comidaService.editarComida(new Comida(this.comida.id, this.comida.nombre, this.comida.descripcion, this.comida.cantidad_disponible, this.comida.precio_unidad));
-    alert("se edito exitosamente");
+    this.comidaService.editarComida(new Comida(this.comida.id, this.comida.nombre, this.comida.descripcion, this.comida.cantidad_disponible, this.comida.precio_unidad)).subscribe(
+      result => {
+        console.log(result);
+        alert("se edito exitosamente");
+        this.comida = result;
+      },
+      error => console.error(error)
+    );
   }
 }

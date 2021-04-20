@@ -5,6 +5,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { NavbarHomeComponent } from './navbar-home/navbar-home.component';
 import { ComidaService } from './servicios/comida.service'
+import { VentaService } from './servicios/venta.service'
 
 @NgModule({
   declarations: [AdminComponent, NavbarHomeComponent],
@@ -13,6 +14,6 @@ import { ComidaService } from './servicios/comida.service'
     AdminRoutingModule,
     HttpClientModule
   ],
-  providers: [ComidaService]
+  providers: [ComidaService, VentaService]
 })
 export class AdminModule { }

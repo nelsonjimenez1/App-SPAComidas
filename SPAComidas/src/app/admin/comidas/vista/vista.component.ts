@@ -32,7 +32,12 @@ export class VistaComponent implements OnInit {
   }
 
   eliminar(id:number) {
-    this.comidaService.eliminarComida(id);
-    alert("se elimino exitosamente");
+    this.comidaService.eliminarComida(id).subscribe(
+      result => {
+        console.log(result);
+        alert("se elimino exitosamente");
+      },
+      error => console.error(error)
+    );
   }
 }
