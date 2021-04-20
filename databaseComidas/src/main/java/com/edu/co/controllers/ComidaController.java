@@ -10,8 +10,11 @@ import com.edu.co.services.ComidaService;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,7 +43,7 @@ public class ComidaController {
         return null;
     }
     
-    @RequestMapping(value = "/comida", method = RequestMethod.PUT)
+    @PutMapping("/comida")
     Comida editComida(@RequestBody Comida comida) {
         Comida comidaAux = comidaService.editComida(comida);
         if(comidaAux != null) {
@@ -49,12 +52,12 @@ public class ComidaController {
         return null;
     }
     
-    @RequestMapping(value = "/comida", method = RequestMethod.POST)
+    @PostMapping("/comida")
     Comida saveComida(@RequestBody Comida comida) {
         return comidaService.saveComida(comida);
     }
      
-    @RequestMapping(value = "/comida{id}", method = RequestMethod.DELETE)
+    @DeleteMapping("/comida/{id}")//para eliminar esta entidad toca eliminar primero su venta si tiene
     void deleteComidaById(@PathVariable Long id) {
         comidaService.deleteComidaById(id);
     }
