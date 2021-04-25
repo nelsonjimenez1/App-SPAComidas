@@ -25,3 +25,10 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+##Indicaciones
+1. El el proyecto databaseComidas se encuentra el archivo data.sql, el cual contiene las ventas quemadas
+2. Compilar el proyecto databaseComidas con el comando mvn package en la raiz de la carpeta 'databaseComidas'
+3. Ejecutar el proyecto databaseComidas con el comando java -jar target/databaseComidas-0.0.1-SNAPSHOT.jar en la raiz de la carpeta 'databaseComidas'
+4. En el login esta el usuario admin con contraseña admin
+5. Para los usuarios clientes no hay usuarios quemados
