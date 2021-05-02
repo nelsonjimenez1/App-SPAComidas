@@ -1,9 +1,22 @@
-<div>
-  <form (ngSubmit)="signUp()">
-    <input  type="text" [(ngModel)]="user" name="user" placeholder="correo">
-    <br>
-    <input  type="password" [(ngModel)]="password" name="pass" placeholder="contraseña">
-    <br>
-    <button type="submit" id="signUp">Crear</button>
-  </form>
+<div class="container">
+  <div class="row justify-content-center pt-5 mt-5 mr-1">
+    <div class="col-md-4 formulario">
+      <form (ngSubmit)="signUp()">
+        <div class="form-gorup text-center">
+          <h1>Ingresa tus datos</h1>
+        </div>
+        <div class="form-group mx-sm-4 pt-2 text-center">
+          <input class="form-control" type="text" [(ngModel)]="user" name="user" placeholder="Ingrese Correo">
+        </div>
+        <div class="form-group mx-sm-4 pt-3 text-center">
+          <input class="form-control  text-center" type="password" [(ngModel)]="password" name="pass"
+            placeholder="Ingrese Contraseña">
+        </div>
+        <div class="form-group mx-sm-4 pt-3 text-center">
+          <input type="submit" class="btn btn-block ingresar  mx-sm-4" value="Regístrarse" id="signUp">
+        </div>
+    
+      </form>
+    </div>
+  </div>
 </div>

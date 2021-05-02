@@ -1,11 +1,28 @@
+
 <form (ngSubmit)="editar()">
-  <input type="text" [(ngModel)]="comida.nombre" name="nombre" placeholder="nombre" value="comida.nombre">
-  <br>
-  <input type="text" [(ngModel)]="comida.descripcion" name="descripcion" value="comida.descripcion">
-  <br>
-  <input type="number" [(ngModel)]="comida.cantidad_disponible" name="cantidad" value = "comida.cantidad_disponible">
-  <br>
-  <input type="number" [(ngModel)]="comida.precio_unidad" name="precio_unidad" value = "comida.precio_unidad">
-  <br>
-  <button type="submit" id="editar">Editar comida</button>
+  <div class="form-gorup text-center">
+    <h1>Ingrese Datos del platillo</h1>
+  </div>
+  <div class="form-group mx-sm-4 pt-2">
+    <h5>Nombre del platillo</h5>
+    <input class="form-control" type="text" [(ngModel)]="comida.nombre" name="nombre"  placeholder="Nombre" value="comida.nombre" >
+  </div>
+  <div class="form-group mx-sm-4 pt-2">
+    <h5>Descripción del platillo</h5>
+    <input class="form-control" type="text" [(ngModel)]="comida.descripcion" name="descripcion" placeholder="Descripcion" value="comida.descripcion">
+  </div>
+
+  <div class="form-group mx-sm-4 pt-2">
+    <h5>Stock disponible del platillo</h5>
+    <input class="form-control" type="number" [(ngModel)]="comida.cantidad_disponible" name="cantidad"   placeholder="Ingrese el nuevo stock disponible del platillo" value = "comida.cantidad_disponible">
+  </div>
+  <div class="form-group mx-sm-4 pt-2">
+    <h5>Precio unitario del platillo</h5>
+    <input class="form-control" type="number" [(ngModel)]="comida.precio_unidad" name="precio_unidad"   placeholder="Ingrese nuevo precio unitario del platillo" value = "comida.precio_unidad">
+    
+  </div>
+  <div class="form-group mx-sm-4 pt-3">
+    <input type="submit"  [routerLink]="['/editar']"class="btn btn-block ingresar  mx-sm-4" value="Editar Platillo" id="editar">
+  </div>
+
 </form>

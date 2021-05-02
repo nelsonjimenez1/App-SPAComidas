@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    font-family: 'Oxygen', sans-serif;
+}
+
+.navbar{
+    box-shadow:0 2px 4px 0 rgba(75, 255, 84, 0.603);
+    min-height: 80px;
+    ;
+}
+.navbar-light{
+    color: rgb(231, 165, 165);}
+.nav-link{ color: rgba(6, 46, 2, 0.836);}
+.nav-link:hover{ color: rgb(29, 184, 37);}
+.ml-auto{
+    text-orientation: sideways-right;
+}
+
+#hero{
+    background-color: rgba(197, 243, 204, 0.685) ;
+    background-size: cover;
+    padding-top: 90px;
+    min-height: 800px;
+    color: blanchedalmond;
+}

@@ -2,5 +2,6 @@
   <ol>
     <li *ngFor="let comida of listaComidas" (click) = 'nav(comida.id)'>{{comida.id}}</li>
   </ol>
-  <a [routerLink]="['/admin/comidas/agregar']">Agregar comida</a>
+  <a class="btn btn-block ingresar  mx-sm-4"  [routerLink]="['/admin/comidas/agregar']">Agregar Platillo</a>
+
 </div>

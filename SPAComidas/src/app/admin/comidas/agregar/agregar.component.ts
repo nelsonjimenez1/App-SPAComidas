@@ -26,6 +26,7 @@ export class AgregarComponent implements OnInit {
       },
       error => console.error(error)
     );
+    
 
   }
 }

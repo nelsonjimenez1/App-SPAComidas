@@ -1,11 +1,28 @@
+
 <form (ngSubmit)="agregar()">
-  <input type="text" [(ngModel)]="nombre" name="nombre" placeholder="nombre">
-  <br>
-  <input type="text" [(ngModel)]="descripcion" name="descripcion" placeholder="descripcion">
-  <br>
-  <input type="number" [(ngModel)]="cantidad" name="cantidad" value = "0">
-  <br>
-  <input type="number" [(ngModel)]="precio_unidad" name="precio_unidad" value = "0">
-  <br>
-  <button type="submit" id="agregar">Agregar comida</button>
+  <div class="form-gorup text-center">
+    <h1>Ingrese Datos del platillo</h1>
+  </div>
+  <div class="form-group mx-sm-4 pt-2">
+    <h5>Nombre del platillo</h5>
+    <input class="form-control" type="text" [(ngModel)]="nombre" name="nombre" >
+  </div>
+  <div class="form-group mx-sm-4 pt-2">
+    <h5>Descripción del platillo</h5>
+    <input class="form-control" type="text" [(ngModel)]="descripcion" name="descripcion">
+  </div>
+
+  <div class="form-group mx-sm-4 pt-2">
+    <h5>Stock disponible del platillo</h5>
+    <input class="form-control" type="number" [(ngModel)]="cantidad" name="cantidad"   placeholder="Ingrese el stock disponible del platillo">
+  </div>
+  <div class="form-group mx-sm-4 pt-2">
+    <h5>Precio unitario del platillo</h5>
+    <input class="form-control" type="number" [(ngModel)]="precio_unidad" name="precio_unidad"   placeholder="Ingrese precio unitario del platillo">
+    
+  </div>
+  <div class="form-group mx-sm-4 pt-3">
+    <input type="submit"  [routerLink]="['/agregar']"class="btn btn-block ingresar  mx-sm-4" value="Agregar Platillo" id="agregar">
+  </div>
+
 </form>

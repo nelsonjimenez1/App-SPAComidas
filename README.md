@@ -3,8 +3,8 @@
 
 Ruta a repositorio:  https://minerva.javeriana.edu.co/sandra.chavez/proyecto_modulo2_20296610_020263412.git
 
- Tener en cuenta para base de datos la carpeta:databaseComidas[https://minerva.javeriana.edu.co/sandra.chavez/proyecto_modulo2_20296610_020263412/-/tree/master/databaseComidas](url)
- Tener en cuenta para front  la carpeta: FrontSPAComidas[https://minerva.javeriana.edu.co/sandra.chavez/proyecto_modulo2_20296610_020263412/-/tree/master/SPAComidas/Front%20SPAComidas](url)   La última que fue Actualizada
+ Tener en cuenta para base de datos la carpeta: databaseComidas[https://minerva.javeriana.edu.co/sandra.chavez/proyecto_modulo2_20296610_020263412/-/tree/master/databaseComidas](url)
+ Tener en cuenta para front  la carpeta/archivo: FrontSPAComidas.rar[https://minerva.javeriana.edu.co/sandra.chavez/proyecto_modulo2_20296610_020263412/-/tree/master/SPAComidas/Front%20SPAComidas](url)   La última que fue Actualizada
 
 
 

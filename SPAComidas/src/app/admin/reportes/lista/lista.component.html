@@ -1,6 +1,24 @@
-<div>
-  <ol>
-    <li *ngFor="let venta of listaVentas">{{venta.comida.nombre}} {{venta.precio_total}}</li>
-  </ol>
-  <p>total: {{total}}</p>
-</div>
+
+<form >
+  <div class="form-gorup text-center ">
+    <h1>Reporte de ventas</h1>
+  </div>
+  <div class="form-group mx-sm-4 pt-2 ">
+    <div  class="back"> <h6>Nombre del platillo</h6></div>
+    
+    <ol>
+      <li *ngFor="let venta of listaVentas">{{venta.comida.nombre}}</li>
+    </ol>
+  </div>
+  <div class="form-group mx-sm-4 pt-2  ">
+    <div  class="back"> <h6>Precio del platillo</h6></div>
+    <ol>
+      <li *ngFor="let venta of listaVentas">{{venta.precio_total}}</li>
+    </ol>
+  </div>
+  <div class="form-group mx-sm-4 pt-2  text-center">
+    <h6>Total Ventas</h6>
+    <p>{{total}}</p>
+  </div>
+
+</form>
