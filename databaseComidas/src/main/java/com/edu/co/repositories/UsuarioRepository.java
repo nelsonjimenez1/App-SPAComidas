@@ -6,7 +6,6 @@
 package com.edu.co.repositories;
 
 import com.edu.co.entities.Usuario;
-import com.edu.co.entities.Venta;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +14,6 @@ import org.springframework.stereotype.Repository;
  * @author nelso
  */
 @Repository
-public interface VentaRepository extends CrudRepository<Venta, Long>{
+public interface UsuarioRepository extends CrudRepository<Usuario, Long>{
     
 }

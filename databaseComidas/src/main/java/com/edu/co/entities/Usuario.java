@@ -1,30 +1,32 @@
-package com.edu.co.usuario;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.edu.co.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ *
+ * @author nelso
+ */
 @Entity
 public class Usuario {
-
     @Id
     @GeneratedValue
-    private long id;
-
-    @Column(unique = true)
+    private Long id;
     private String user;
-
     private String password;
-    
     private String rol;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
-    
-    public void setId(long id) {
+
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -43,7 +45,7 @@ public class Usuario {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public String getRol() {
         return rol;
     }

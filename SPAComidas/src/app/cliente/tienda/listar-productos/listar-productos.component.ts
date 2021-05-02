@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Comida } from './../../../models/comida';
-import { ComidaService } from './../../../servicios/comida.service';
+import { ComidaService } from './../../servicios/comida.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 
@@ -15,16 +15,11 @@ export class ListarProductosComponent implements OnInit {
   constructor(private comidaService: ComidaService, private router: Router) { }
 
   ngOnInit(): void {
-    this.comidaService.obtenerListaComidas().subscribe(
-      result => {
-        console.log(result);
-        this.listaComidas = result;
-      },
-      error => console.error(error)
-    );
+    this.listaComidas = this.comidaService.obtenerListaComidas();
+    console.log(this.listaComidas);
   }
 
-  nav(id:number) {
-    this.router.navigate(["/cliente/tienda/vista/" + id]);
+  nav(comidaNombre:string) {
+    this.router.navigate(["/cliente/tienda/vista/" + comidaNombre]);
   }
 }

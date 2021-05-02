@@ -1,1 +1,2 @@
-insert into comida (id, nombre, descripcion, cantidad_disponible, precio_unidad, existe) values (-2, 'producto 1', 'descripcion 1', 30, 1000, true);
+insert into comida (id, nombre, descripcion, cantidad_disponible, precio_unidad) values (-2, 'producto 1', 'descripcion 1', 30, 1000);
+insert into venta (id, comida_id, fecha, cantidad_productos, precio_total) values (-2, -2, '2020-10-3 19:16:20', 3, 3000);

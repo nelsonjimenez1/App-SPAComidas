@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Venta } from './../models/venta';
+import { Venta } from './../../models/venta';
 import {
   HttpClient,
   HttpErrorResponse,
@@ -15,12 +15,7 @@ import { environment } from "src/environments/environment";
 })
 
 export class VentaService {
-  public auth:string = '';
   constructor(private http: HttpClient) {
-    var auth = localStorage.getItem('authorization');
-    if(auth) {
-      this.auth = auth;
-    }
   }
 
   private handleError(error: HttpErrorResponse): Observable<any> {
@@ -30,10 +25,7 @@ export class VentaService {
 
   private get<T>(url:any): Observable<T> {
     console.log("get:", url);
-    var header = {
-      headers: new HttpHeaders().set('Authorization',  this.auth)
-    }
-    return this.http.get<T>(url, header)
+    return this.http.get<T>(url, {withCredentials: false})//cambiar a true cuando halla autenticacion
       .pipe(
         // retry(5),
         catchError(this.handleError)
@@ -42,10 +34,7 @@ export class VentaService {
 
   private post<T>(url:any, data: T): Observable<T> {
     console.log("post:", url);
-    var header = {
-      headers: new HttpHeaders().set('Authorization',  this.auth)
-    }
-    return this.http.post<T>(url, data, header)
+    return this.http.post<T>(url, data, {withCredentials: false})
       .pipe(
         // retry(5),
         catchError(this.handleError)
@@ -54,10 +43,7 @@ export class VentaService {
 
   private put<T>(url:any, data: T): Observable<T> {
     console.log("put:", url);
-    var header = {
-      headers: new HttpHeaders().set('Authorization',  this.auth)
-    }
-    return this.http.put<T>(url, data, header)
+    return this.http.put<T>(url, data, {withCredentials: false})
       .pipe(
         // retry(5),
         catchError(this.handleError)
@@ -66,10 +52,7 @@ export class VentaService {
 
   private delete<T>(url:any): Observable<T> {
     console.log("delete:", url);
-    var header = {
-      headers: new HttpHeaders().set('Authorization',  this.auth)
-    }
-    return this.http.delete<T>(url, header)
+    return this.http.delete<T>(url, {withCredentials: false})
       .pipe(
         // retry(5),
         catchError(this.handleError)
@@ -79,20 +62,5 @@ export class VentaService {
   obtenerVentas() {
     const url = `${environment.comidasService}/venta`;
     return this.get<Venta[]>(url);
-  }
-
-  agregarVenta(venta:Venta) {
-    const url = `${environment.comidasService}/venta`;
-    return this.post<Venta>(url, venta);
-  }
-
-  obtenerVentasPorUser(idUser:string) {
-    const url = `${environment.comidasService}/venta/user/${idUser}`;
-    return this.get<Venta[]>(url);
-  }
-
-  obtenerVenta(id:number) {
-    const url = `${environment.comidasService}/venta/${id}`;
-    return this.get<Venta>(url);
   }
 }

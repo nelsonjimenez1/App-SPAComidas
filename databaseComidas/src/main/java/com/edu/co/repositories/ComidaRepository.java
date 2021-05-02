@@ -6,9 +6,8 @@
 package com.edu.co.repositories;
 
 import com.edu.co.entities.Comida;
-import java.util.ArrayList;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+import com.edu.co.entities.Usuario;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -16,7 +15,6 @@ import org.springframework.stereotype.Repository;
  * @author nelso
  */
 @Repository
-public interface ComidaRepository extends JpaRepository<Comida, Long>{
-    @Query("SELECT c from Comida c WHERE c.existe = true")
-    ArrayList<Comida> getAllComidas();
+public interface ComidaRepository extends CrudRepository<Comida, Long>{
+    
 }
