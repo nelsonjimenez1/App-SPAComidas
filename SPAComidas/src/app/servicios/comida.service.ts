@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Comida } from './../../models/comida';
+import { Comida } from './../models/comida';
 import {
   HttpClient,
   HttpErrorResponse,
@@ -15,8 +15,12 @@ import { environment } from "src/environments/environment";
 })
 
 export class ComidaService {
+  public auth:string = '';
   constructor(private http: HttpClient) {
-
+    var auth = localStorage.getItem('authorization');
+    if(auth) {
+      this.auth = auth;
+    }
   }
 
   private handleError(error: HttpErrorResponse): Observable<any> {
@@ -26,7 +30,10 @@ export class ComidaService {
 
   private get<T>(url:any): Observable<T> {
     console.log("get:", url);
-    return this.http.get<T>(url, {withCredentials: false})//cambiar a true cuando halla autenticacion
+    var header = {
+      headers: new HttpHeaders().set('Authorization',  this.auth)
+    }
+    return this.http.get<T>(url, header)
       .pipe(
         // retry(5),
         catchError(this.handleError)
@@ -35,7 +42,10 @@ export class ComidaService {
 
   private post<T>(url:any, data: T): Observable<T> {
     console.log("post:", url);
-    return this.http.post<T>(url, data, {withCredentials: false})
+    var header = {
+      headers: new HttpHeaders().set('Authorization',  this.auth)
+    }
+    return this.http.post<T>(url, data, header)
       .pipe(
         // retry(5),
         catchError(this.handleError)
@@ -44,7 +54,10 @@ export class ComidaService {
 
   private put<T>(url:any, data: T): Observable<T> {
     console.log("put:", url);
-    return this.http.put<T>(url, data, {withCredentials: false})
+    var header = {
+      headers: new HttpHeaders().set('Authorization',  this.auth)
+    }
+    return this.http.put<T>(url, data, header)
       .pipe(
         // retry(5),
         catchError(this.handleError)
@@ -53,7 +66,10 @@ export class ComidaService {
 
   private delete<T>(url:any): Observable<T> {
     console.log("delete:", url);
-    return this.http.delete<T>(url, {withCredentials: false})
+    var header = {
+      headers: new HttpHeaders().set('Authorization',  this.auth)
+    }
+    return this.http.delete<T>(url, header)
       .pipe(
         // retry(5),
         catchError(this.handleError)
@@ -70,18 +86,13 @@ export class ComidaService {
     return this.get<Comida>(url);
   }
 
-  agregarComida(comida:Comida) {
-    const url = `${environment.comidasService}/comida`;
-    return this.post<Comida>(url, comida);
-  }
-
   editarComida(comida:Comida) {
     const url = `${environment.comidasService}/comida`;
     return this.put<Comida>(url, comida);
   }
 
-  eliminarComida(id:number) {
-    const url = `${environment.comidasService}/comida/${id}`;
-    return this.delete(url);
+  agregarComida(comida:Comida) {
+    const url = `${environment.comidasService}/comida`;
+    return this.post<Comida>(url, comida);
   }
 }

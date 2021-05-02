@@ -1,6 +1,6 @@
 <div>
   <p>{{comida.nombre}}</p>
-  <form (ngSubmit)="comprar(comida.nombre)">
+  <form (ngSubmit)="comprar()">
     <input type="number" [(ngModel)]="cantidad_productos" name="cantidad_productos" value = "0">
     <br>
     <button type="submit" id="comprar">Comprar comida</button>

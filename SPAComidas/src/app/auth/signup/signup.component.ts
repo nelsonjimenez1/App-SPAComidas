@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from './../services/auth.service';
+import { AuthService } from './../../servicios/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -21,9 +21,13 @@ export class SignupComponent implements OnInit {
 
   signUp() {
     console.log(this.user + ' - ' + this.password);
-    var rol = this.auth.signUp(this.user, this.password, 'Cliente');
-    localStorage.setItem('rol', 'Cliente');
-    localStorage.setItem('user', this.user);
-    this.router.navigate(['/cliente']);
+    this.auth.signUp(this.user, this.password, 'Cliente').subscribe(
+      result => {
+        console.log(result);
+        this.router.navigate(['/login']);
+
+      },
+      error => console.error(error)
+    );
   }
 }

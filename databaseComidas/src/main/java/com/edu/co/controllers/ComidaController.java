@@ -9,6 +9,7 @@ import com.edu.co.entities.Comida;
 import com.edu.co.services.ComidaService;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,39 +27,39 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class ComidaController {
+
     @Autowired
     private ComidaService comidaService;
-    
+
+    @Secured({"ROL_Cliente", "ROL_Admin"})
     @GetMapping("/comida")
     ArrayList<Comida> getAllComidas() {
         return comidaService.getAllComidas();
     }
-    
+
+    @Secured({"ROL_Cliente", "ROL_Admin"})
     @GetMapping("/comida/{id}")
     Comida findComidaById(@PathVariable Long id) {
         Comida comida = comidaService.findComidaById(id);
-        if(comida != null) {
+        if (comida != null) {
             return comida;
         }
         return null;
     }
-    
+
+    @Secured("ROL_Admin")
     @PutMapping("/comida")
     Comida editComida(@RequestBody Comida comida) {
         Comida comidaAux = comidaService.editComida(comida);
-        if(comidaAux != null) {
+        if (comidaAux != null) {
             return comidaAux;
         }
         return null;
     }
-    
+
+    @Secured("ROL_Admin")
     @PostMapping("/comida")
     Comida saveComida(@RequestBody Comida comida) {
         return comidaService.saveComida(comida);
-    }
-     
-    @DeleteMapping("/comida/{id}")//para eliminar esta entidad toca eliminar primero su venta si tiene
-    void deleteComidaById(@PathVariable Long id) {
-        comidaService.deleteComidaById(id);
     }
 }

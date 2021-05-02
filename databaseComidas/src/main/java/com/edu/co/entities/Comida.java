@@ -22,6 +22,7 @@ public class Comida {
     private String descripcion;
     private int cantidad_disponible;
     private double precio_unidad;
+    private boolean existe;
     
     public Long getId() {
         return id;
@@ -62,4 +63,13 @@ public class Comida {
     public void setPrecio_unidad(double precio_unidad) {
         this.precio_unidad = precio_unidad;
     }
+
+    public boolean isExiste() {
+        return existe;
+    }
+
+    public void setExiste(boolean existe) {
+        this.existe = existe;
+    }
+    
 }
