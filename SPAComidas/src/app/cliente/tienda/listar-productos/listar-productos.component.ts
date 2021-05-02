@@ -15,6 +15,8 @@ export class ListarProductosComponent implements OnInit {
   constructor(private comidaService: ComidaService, private router: Router) { }
 
   ngOnInit(): void {
+    //validaciones
+    //listar productos que tenga existencia
     this.comidaService.obtenerListaComidas().subscribe(
       result => {
         console.log(result);

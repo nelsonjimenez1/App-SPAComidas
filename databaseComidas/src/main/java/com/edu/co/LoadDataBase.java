@@ -17,7 +17,7 @@ public class LoadDataBase {
             Usuario admin = new Usuario();
             admin.setUser("admin");
             admin.setPassword(bCryptPasswordEncoder.encode("admin"));
-            admin.setRol("Admin");
+            admin.setRol("ADMIN");
             userRepository.save(admin);
         };
     }

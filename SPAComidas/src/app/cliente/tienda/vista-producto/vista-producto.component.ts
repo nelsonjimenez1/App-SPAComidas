@@ -34,6 +34,8 @@ export class VistaProductoComponent implements OnInit {
   }
 
   comprar() {
+    //validaciones
+    //actualizar la existencia de productos en la entidad comida
     var venta = new Venta()
     venta.id = -1;
     venta.comida = this.comida;

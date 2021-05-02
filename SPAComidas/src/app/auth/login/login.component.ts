@@ -28,13 +28,13 @@ export class LoginComponent implements OnInit {
           result2 => {
             console.log(result2);
             var rol = result2.rol;
-            if (rol == 'Cliente') {
-              localStorage.setItem('rol', 'Cliente');
+            if (rol == 'CLIENTE') {
+              localStorage.setItem('rol', 'CLIENTE');
               localStorage.setItem('user', this.user);
               this.router.navigate(['/cliente']);
 
-            } else if (rol == 'Admin'){
-              localStorage.setItem('rol', 'Admin');
+            } else if (rol == 'ADMIN'){
+              localStorage.setItem('rol', 'ADMIN');
               localStorage.setItem('user', this.user);
               this.router.navigate(['/admin']);
 

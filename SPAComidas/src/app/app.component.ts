@@ -11,7 +11,7 @@ export class AppComponent implements OnInit{
   constructor(private router: Router) {}
   ngOnInit(): void {
     if (localStorage.getItem('user')){
-      if(localStorage.getItem('rol') == 'Admin') {
+      if(localStorage.getItem('rol') == 'ADMIN') {
         this.router.navigate(["/admin/"]);
       }
       else {

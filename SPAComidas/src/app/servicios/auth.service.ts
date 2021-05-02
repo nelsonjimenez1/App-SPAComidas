@@ -28,7 +28,7 @@ export class AuthService {
   }
 
   private get<T>(url:any): Observable<T> {
-    console.log("get:", url);
+    console.log("get:", url, this.auth);
     var header = {
       headers: new HttpHeaders().set('Authorization',  this.auth)
     }
