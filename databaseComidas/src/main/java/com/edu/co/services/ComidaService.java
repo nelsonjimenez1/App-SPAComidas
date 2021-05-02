@@ -24,7 +24,7 @@ public class ComidaService {
     private ComidaRepository comidaRepository;
     
     public ArrayList<Comida> getAllComidas() {
-        return (ArrayList<Comida>) comidaRepository.findAll();
+        return comidaRepository.getAllComidas();
     }
     
     public Comida findComidaById(Long id) {
@@ -32,7 +32,7 @@ public class ComidaService {
         if (comida.isPresent()) {
             return comida.get();
         }
-        
+
         return null;
     }
     
@@ -47,9 +47,5 @@ public class ComidaService {
     
     public Comida saveComida(Comida comida) {
         return comidaRepository.save(comida);
-    }
-    
-    public void deleteComidaById(Long id) {
-        comidaRepository.deleteById(id);
     }
 }

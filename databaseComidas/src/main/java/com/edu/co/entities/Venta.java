@@ -5,6 +5,7 @@
  */
 package com.edu.co.entities;
 
+import com.edu.co.usuario.Usuario;
 import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,12 +25,12 @@ public class Venta {
     @OneToOne
     @JoinColumn(name = "comida_id", updatable = false, nullable = false)
     private Comida comida;
-    private String fecha;
+    private Date fecha;
     private int cantidad_productos;
     private double precio_total;
-    /*@OneToOne
+    @OneToOne
     @JoinColumn(name = "usuario_id", updatable = false, nullable = false)
-    private Usuario usuario;*/
+    private Usuario usuario;
 
     public Long getId() {
         return id;
@@ -47,11 +48,11 @@ public class Venta {
         this.comida = comida;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
@@ -69,5 +70,13 @@ public class Venta {
 
     public void setPrecio_total(double precio_total) {
         this.precio_total = precio_total;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

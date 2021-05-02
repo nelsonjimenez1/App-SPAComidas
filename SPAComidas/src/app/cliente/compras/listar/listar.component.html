@@ -1,5 +1,5 @@
 <div>
   <ol>
-    <li *ngFor="let venta of listaVentas" (click) = 'nav(venta.comida.nombre)'>{{venta.comida.nombre}} {{venta.precio_total}}</li>
+    <li *ngFor="let venta of listaVentas" (click) = 'nav(venta.id)'>{{venta.comida.nombre}} {{venta.precio_total}}</li>
   </ol>
 </div>

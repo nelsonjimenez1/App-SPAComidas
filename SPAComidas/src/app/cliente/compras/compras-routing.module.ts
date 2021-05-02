@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '', component: ListarComponent
   },
   {
-    path: 'vista/:comidaNombre', component: VistaComponent
+    path: 'vista/:idVenta', component: VistaComponent
   },
 ];
 

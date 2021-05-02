@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Comida } from './../../../models/comida';
-import { ComidaService } from './../../servicios/comida.service';
+import { ComidaService } from './../../../servicios/comida.service';
 
 @Component({
   selector: 'app-editar',
@@ -9,7 +9,7 @@ import { ComidaService } from './../../servicios/comida.service';
   styleUrls: ['./editar.component.css']
 })
 export class EditarComponent implements OnInit {
-  public comida:Comida=new Comida(-1, '', '', -1, -1);
+  public comida:Comida=new Comida(-1, '', '', -1, -1, false);
 
   constructor(private comidaService: ComidaService, private route: ActivatedRoute, private router: Router) { }
 
@@ -29,7 +29,7 @@ export class EditarComponent implements OnInit {
 
   editar() {
     //validaciones
-    this.comidaService.editarComida(new Comida(this.comida.id, this.comida.nombre, this.comida.descripcion, this.comida.cantidad_disponible, this.comida.precio_unidad)).subscribe(
+    this.comidaService.editarComida(new Comida(this.comida.id, this.comida.nombre, this.comida.descripcion, this.comida.cantidad_disponible, this.comida.precio_unidad, this.comida.existe)).subscribe(
       result => {
         console.log(result);
         alert("se edito exitosamente");

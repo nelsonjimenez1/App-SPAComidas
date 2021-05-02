@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VentaService } from './../../servicios/venta.service';
+import { VentaService } from './../../../servicios/venta.service';
 import { Venta } from './../../../models/venta';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -15,12 +15,18 @@ export class ListarComponent implements OnInit {
 
   ngOnInit(): void {
     var user = localStorage.getItem('user');
-    if(user){
-      this.listaVentas = this.ventaService.obtenerVentasPorUser(user);
+    if(user) {
+      this.ventaService.obtenerVentasPorUser(user).subscribe(
+        result => {
+          console.log(result);
+          this.listaVentas = result;
+        },
+        error => console.error(error)
+      );
     }
   }
 
-  nav(nombreComida:string) {
-    this.router.navigate(['/cliente/compras/vista/' + nombreComida]);
+  nav(idVenta:number) {
+    this.router.navigate(['/cliente/compras/vista/' + idVenta]);
   }
 }

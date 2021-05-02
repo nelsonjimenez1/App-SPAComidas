@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Comida } from './../../../models/comida';
-import { ComidaService } from './../../servicios/comida.service';
+import { ComidaService } from './../../../servicios/comida.service';
 
 @Component({
   selector: 'app-vista',
@@ -9,7 +9,7 @@ import { ComidaService } from './../../servicios/comida.service';
   styleUrls: ['./vista.component.css']
 })
 export class VistaComponent implements OnInit {
-  public comida:Comida = new Comida(-1, '', '', -1, -1);
+  public comida:Comida = new Comida(-1, '', '', -1, -1, false);
 
   constructor(private comidaService: ComidaService, private route: ActivatedRoute, private router: Router) { }
 
@@ -31,8 +31,9 @@ export class VistaComponent implements OnInit {
     this.router.navigate(["/admin/comidas/editar/" + id]);
   }
 
-  eliminar(id:number) {
-    this.comidaService.eliminarComida(id).subscribe(
+  eliminar(comida:Comida) {
+    comida.existe = false;
+    this.comidaService.editarComida(comida).subscribe(
       result => {
         console.log(result);
         alert("se elimino exitosamente");
