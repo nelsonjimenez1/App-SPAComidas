@@ -34,7 +34,7 @@ public class UsuarioController {
         return usuarioRepository.findByUser(user);
     }
 
-    @Secured("ROL_ADMIN")
+    @Secured("ROLE_ADMIN")
     @GetMapping("/users")
     public List<Usuario> getAllUsuarios() {
         return usuarioRepository.findAll();

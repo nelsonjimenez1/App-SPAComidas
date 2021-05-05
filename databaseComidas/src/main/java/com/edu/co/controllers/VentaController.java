@@ -28,19 +28,19 @@ public class VentaController {
     @Autowired
     private VentaService ventaService;
     
-    @Secured("ROL_ADMIN")
+    @Secured("ROLE_ADMIN")
     @GetMapping("/venta")
     ArrayList<Venta> getAllVentas() {
         return ventaService.getAllVentas();
     }
     
-    @Secured("ROL_CLIENTE")
+    @Secured("ROLE_CLIENTE")
     @PostMapping("/venta")
     Venta saveVenta(@RequestBody Venta venta) {
         return ventaService.saveVenta(venta);
     }
     
-    @Secured("ROL_CLIENTE")
+    @Secured("ROLE_CLIENTE")
     @GetMapping("/venta/user/{user}")
     ArrayList<Venta> findVentasByUser(@PathVariable String user) {
         ArrayList<Venta> ventas = ventaService.findVentasByUser(user);
@@ -50,7 +50,7 @@ public class VentaController {
         return null;
     }
     
-    @Secured("ROL_CLIENTE")
+    @Secured("ROLE_CLIENTE")
     @GetMapping("/venta/{id}")
     Venta findVenta(@PathVariable Long id) {
         Venta venta = ventaService.findVenta(id);

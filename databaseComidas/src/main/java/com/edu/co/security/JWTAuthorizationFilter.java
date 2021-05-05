@@ -3,6 +3,7 @@ package com.edu.co.security;
 import static com.edu.co.security.Constants.HEADER_AUTHORIZACION_KEY;
 import static com.edu.co.security.Constants.SUPER_SECRET_KEY;
 import static com.edu.co.security.Constants.TOKEN_BEARER_PREFIX;
+import io.jsonwebtoken.Claims;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,6 +19,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import io.jsonwebtoken.Jwts;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.stream.Collectors;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
@@ -39,17 +44,23 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
     }
 
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
-        String token = request.getHeader(HEADER_AUTHORIZACION_KEY);
+        String token = request.getHeader("Authorization");
         if (token != null) {
             // Se procesa el token y se recupera el usuario.
-            String user = Jwts.parser()
-                    .setSigningKey(SUPER_SECRET_KEY)
-                    .parseClaimsJws(token.replace(TOKEN_BEARER_PREFIX, ""))
-                    .getBody()
-                    .getSubject();
+            Claims body = Jwts.parser()
+                    .setSigningKey("12345")
+                    .parseClaimsJws(token.replace("Bearer ", ""))
+                    .getBody();
+
+            String user = body.getSubject();
 
             if (user != null) {
-                return new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
+                final Collection<SimpleGrantedAuthority> authorities
+                        = Arrays.stream(body.get("Authorities").toString().split(","))
+                                .map(SimpleGrantedAuthority::new)
+                                .collect(Collectors.toList());
+
+                return new UsernamePasswordAuthenticationToken(user, null, authorities);
             }
             return null;
         }

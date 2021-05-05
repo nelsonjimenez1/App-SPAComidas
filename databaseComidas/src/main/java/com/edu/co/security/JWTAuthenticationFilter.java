@@ -27,6 +27,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
+import org.springframework.security.core.GrantedAuthority;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
@@ -53,7 +57,15 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
             Authentication auth) throws IOException, ServletException {
 
+        final String authorities = auth.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.joining(","));
+
+        final Map<String, Object> claims = new HashMap<>();
+        claims.put("Authorities", authorities);
+
         String token = Jwts.builder().setIssuedAt(new Date()).setIssuer(ISSUER_INFO)
+                .setClaims(claims)
                 .setSubject(((User) auth.getPrincipal()).getUsername())
                 .setExpiration(new Date(System.currentTimeMillis() + TOKEN_EXPIRATION_TIME))
                 .signWith(SignatureAlgorithm.HS512, SUPER_SECRET_KEY).compact();

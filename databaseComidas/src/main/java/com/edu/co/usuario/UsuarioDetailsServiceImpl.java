@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class UsuarioDetailsServiceImpl implements UserDetailsService {
 
-    
     private UsuarioRepository usuarioRepository;
 
     public UsuarioDetailsServiceImpl(UsuarioRepository usuarioRepository) {
@@ -28,7 +27,7 @@ public class UsuarioDetailsServiceImpl implements UserDetailsService {
         if (usuario == null) {
             throw new UsernameNotFoundException(username);
         }
-        
+
         List<SimpleGrantedAuthority> roles = new ArrayList<>();
         roles.add(new SimpleGrantedAuthority("ROLE_" + usuario.getRol()));
         return new User(usuario.getUser(), usuario.getPassword(), roles);

@@ -31,13 +31,13 @@ public class ComidaController {
     @Autowired
     private ComidaService comidaService;
 
-    @Secured({"ROL_CLIENTE", "ROL_ADMIN"})
+    @Secured({"ROLE_CLIENTE", "ROLE_ADMIN"})
     @GetMapping("/comida")
     ArrayList<Comida> getAllComidas() {
         return comidaService.getAllComidas();
     }
 
-    @Secured({"ROL_CLIENTE", "ROL_ADMIN"})
+    @Secured({"ROLE_CLIENTE", "ROLE_ADMIN"})
     @GetMapping("/comida/{id}")
     Comida findComidaById(@PathVariable Long id) {
         Comida comida = comidaService.findComidaById(id);
@@ -47,7 +47,7 @@ public class ComidaController {
         return null;
     }
 
-    @Secured("ROL_ADMIN")
+    @Secured("ROLE_ADMIN")
     @PutMapping("/comida")
     Comida editComida(@RequestBody Comida comida) {
         Comida comidaAux = comidaService.editComida(comida);
@@ -57,7 +57,7 @@ public class ComidaController {
         return null;
     }
 
-    @Secured("ROL_ADMIN")
+    @Secured("ROLE_ADMIN")
     @PostMapping("/comida")
     Comida saveComida(@RequestBody Comida comida) {
         return comidaService.saveComida(comida);
