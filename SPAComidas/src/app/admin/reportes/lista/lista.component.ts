@@ -24,7 +24,7 @@ export class ListaComponent implements OnInit {
         console.log(results);
         this.listaVentas = results;
         this.listaVentas.map(elem => {
-          suma = suma + elem.precio_total;
+          suma = suma + elem.precio_total*elem.cantidad_productos;
         });
         this.total =suma;
       },

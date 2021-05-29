@@ -5,14 +5,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.Arrays;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+@EnableAutoConfiguration
 @SpringBootApplication
-public class DatabaseComidasApplication {
+public class DatabaseComidasApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(DatabaseComidasApplication.class, args);
@@ -33,6 +37,11 @@ public class DatabaseComidasApplication {
         config.setMaxAge(getLongProperty("cors.maxage"));
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
+    }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(DatabaseComidasApplication.class);
     }
 
     private List<String> getListProperty(String key) {

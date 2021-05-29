@@ -26,6 +26,11 @@ public class UsuarioController {
     @PostMapping("/users")
     public Usuario saveUsuario(@RequestBody Usuario user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        if (user.getRol().equals("ADMIN")) {
+        {
+            return null;
+        }
+    }
         return usuarioRepository.save(user);
     }
 
@@ -34,7 +39,6 @@ public class UsuarioController {
         return usuarioRepository.findByUser(user);
     }
 
-    @Secured("ROLE_ADMIN")
     @GetMapping("/users")
     public List<Usuario> getAllUsuarios() {
         return usuarioRepository.findAll();

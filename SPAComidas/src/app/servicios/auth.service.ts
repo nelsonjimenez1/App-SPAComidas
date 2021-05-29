@@ -16,10 +16,6 @@ import { environment } from "src/environments/environment";
 export class AuthService {
   public auth:string = '';
   constructor(private http: HttpClient) {
-    var auth = localStorage.getItem('authorization');
-    if(auth) {
-      this.auth = auth;
-    }
   }
 
   private handleError(error: HttpErrorResponse): Observable<any> {
@@ -29,8 +25,12 @@ export class AuthService {
 
   private get<T>(url:any): Observable<T> {
     console.log("get:", url, this.auth);
-    var header = {
-      headers: new HttpHeaders().set('Authorization',  this.auth)
+    var auth = localStorage.getItem('authorization');
+    var header;
+    if (auth != null) {
+      header = {
+        headers: new HttpHeaders().set('Authorization',  auth)
+      }
     }
     return this.http.get<T>(url, header)
       .pipe(

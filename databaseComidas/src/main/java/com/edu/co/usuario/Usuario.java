@@ -13,7 +13,7 @@ public class Usuario {
     @GeneratedValue
     private long id;
 
-    @Column(unique = true)
+    @Column(unique = true, name = "usua")
     private String user;
 
     private String password;

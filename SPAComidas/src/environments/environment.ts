@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  comidasService: 'http://localhost:8080'
+  comidasService: 'http://bdspring-env.eba-kp3qppif.us-east-1.elasticbeanstalk.com'
 };
 
 /*

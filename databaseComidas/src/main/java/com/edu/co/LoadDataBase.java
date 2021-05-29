@@ -13,12 +13,15 @@ public class LoadDataBase {
     @Bean
     CommandLineRunner initDatabase(UsuarioRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         return args -> {
-
-            Usuario admin = new Usuario();
+            Usuario findByUser = userRepository.findByUser("admin");
+            if (findByUser == null) {
+               Usuario admin = new Usuario();
             admin.setUser("admin");
             admin.setPassword(bCryptPasswordEncoder.encode("admin"));
             admin.setRol("ADMIN");
-            userRepository.save(admin);
+            userRepository.save(admin); 
+            }
+            
         };
     }
 }
